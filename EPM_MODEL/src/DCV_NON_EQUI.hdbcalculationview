@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::DCV_CUSTOMER" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
-<descriptions defaultDescription="DCV_CUSTOMER"/>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::DCV_NON_EQUI" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DCV_NON_EQUI"/>
 <localVariables/>
 <variableMappings/>
 <dataSources>
@@ -12,7 +12,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="leftOuter" optimizeJoinColumns="false" filterExpressionLanguage="SQL">
+  <calculationView xsi:type="Calculation:NonEquiJoinView" id="NonEquiJoin_1" cardinality="CN_1" joinType="leftOuter">
     <viewAttributes>
       <viewAttribute id="CUSTOMER_ID"/>
       <viewAttribute id="CUSTOMER_NAME1"/>
@@ -22,7 +22,8 @@
       <viewAttribute id="CUSTOMER_STATE"/>
       <viewAttribute id="CUSTOMER_COUNTRY"/>
       <viewAttribute id="CUSTOMER_ZIP"/>
-      <viewAttribute id="COUNTRY_NAME"/></viewAttributes>
+      <viewAttribute id="COUNTRY_NAME"/>
+    </viewAttributes>
     <calculatedViewAttributes/>
     <input node="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="CUSTOMER_ID"/>
@@ -32,61 +33,54 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_CITY" source="CUSTOMER_CITY"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STATE" source="CUSTOMER_STATE"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_COUNTRY" source="CUSTOMER_COUNTRY"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="CUSTOMER_ZIP"/></input>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="CUSTOMER_ZIP"/>
+    </input>
     <input node="SAPPRESS.EPM_MODEL::EPM_COUNTRY">
       <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
-      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_COUNTRY" source="COUNTRY_ID"/>
     </input>
-    <joinAttribute name="CUSTOMER_COUNTRY"/>
+    <joinAttribute leftColumn="CUSTOMER_COUNTRY" rightColumn="COUNTRY_ID" operator="NE"/>
   </calculationView>
 </calculationViews>
-<logicalModel id="Join_1">
+<logicalModel id="NonEquiJoin_1">
   <attributes>
     <attribute id="CUSTOMER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_ID"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_ID"/>
     </attribute>
     <attribute id="CUSTOMER_NAME1" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_NAME1"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_NAME1"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_NAME1"/>
     </attribute>
     <attribute id="CUSTOMER_NAME2" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_NAME2"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_NAME2"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_NAME2"/>
     </attribute>
     <attribute id="CUSTOMER_STREET" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_STREET"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_STREET"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_STREET"/>
     </attribute>
     <attribute id="CUSTOMER_CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_CITY"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_CITY"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_CITY"/>
     </attribute>
     <attribute id="CUSTOMER_STATE" order="6" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_STATE"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_STATE"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_STATE"/>
     </attribute>
     <attribute id="CUSTOMER_COUNTRY" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_COUNTRY"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_COUNTRY"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_COUNTRY"/>
     </attribute>
     <attribute id="CUSTOMER_ZIP" order="8" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CUSTOMER_ZIP"/>
-      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ZIP"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="CUSTOMER_ZIP"/>
     </attribute>
     <attribute id="COUNTRY_NAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COUNTRY_NAME"/>
-      <keyMapping columnObjectName="Join_1" columnName="COUNTRY_NAME"/>
+      <keyMapping columnObjectName="NonEquiJoin_1" columnName="COUNTRY_NAME"/>
     </attribute>
   </attributes>
-  <calculatedAttributes>
-    <calculatedAttribute id="CUST_FULL_NAME" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
-      <descriptions defaultDescription="Customer Full Name"/>
-      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="100">
-        <formula>concat(&quot;CUSTOMER_NAME1&quot;,&quot;CUSTOMER_NAME2&quot;)</formula>
-      </keyCalculation>
-      </calculatedAttribute>
-  </calculatedAttributes>
+  <calculatedAttributes/>
   <baseMeasures/>
   <calculatedMeasures/>
   <restrictedMeasures/>
@@ -97,17 +91,17 @@
       <upperLeftCorner x="40" y="85"/>
     </shape>
   
-    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="85" y="209"/>
+    <shape expanded="true" modelObjectName="NonEquiJoin_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-85" y="223"/>
       <rectangleSize height="30" width="160"/>
     </shape>
-    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_CUSTOMER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="480" y="60"/>
-      <rectangleSize width="308"/>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_CUSTOMER" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="317.81640625"/>
     </shape>
-    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_COUNTRY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
-      <upperLeftCorner x="78" y="66"/>
-      <rectangleSize width="317"/>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_COUNTRY" modelObjectNameSpace="NonEquiJoin_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="308.25390625"/>
     </shape>
   </shapes>
 </layout>
