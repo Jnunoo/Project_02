@@ -1,0 +1,69 @@
+namespace SAPPRESS.EPM_MODEL.ConversionTables;
+
+context CurrencyConversions {
+    entity TCURR {
+        key MANDT : String(3);
+        key KURST : String(4);
+        key FCURR : String(5);
+        key TCURR : String(5);
+        key GDATU : String(8);
+            UKURS : Decimal(9, 5);
+            FFACT : Decimal(9, 0);
+            TFACT : Decimal(9, 0);
+    };
+        entity TCURV {
+        key MANDT : String(3);
+        key KURST : String(4);
+            XINVR : String(1);
+            BWAER : String(5);
+            XBWRL : String(1);
+            GKUZU : String(4);
+            BKUZU : String(4);
+            XFIXD : String(1);
+            XEURO : String(1);
+    };
+        entity TCURF {
+        key MANDT : String(3);
+        key KURST : String(4);
+        key FCURR : String(5);
+        key TCURR : String(5);
+        key GDATU : String(8);
+            FFACT : Decimal(9, 0);
+            TFACT : Decimal(9, 0);
+            ABWCT : String(4);
+            ABWGA : String(8);
+    };
+        entity TCURN {
+        key MANDT    : String(3);
+        key FCURR    : String(5);
+        key TCURR    : String(5);
+        key GDATU    : String(8);
+            NOTATION : String(1);
+    };
+    
+        entity TCURX {
+        key CURRKEY : String(5);
+            CURRDEC : Integer;
+    };
+        entity TCURT {
+        key MANDT : String(3);
+        key SPRAS : String(1);
+        key WAERS : String(5);
+            LTEXT : String(40);
+            KTEXT : String(15) null;
+    };
+        Entity TCURW {
+        key  MANDT: String(3);
+        key  SPRAS: String(1);
+		key  KURST: String(4);
+		CURVW: String(40);
+    };
+        Entity TCURC {
+        key  MANDT: String(3);
+		key  WAERS: String(5);
+		ISOCD: String(3);
+		ALTWR: String(3);
+    	GDATU: String(8);
+		XPRIMARY: String(1);
+    };
+};

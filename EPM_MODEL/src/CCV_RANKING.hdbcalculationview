@@ -30,7 +30,7 @@
     <calculatedViewAttributes/>
     <input node="SAPPRESS.EPM_MODEL::CCV_ORDERS"/>
     <windowFunction dynamicPartitionAttributes="false">
-      <order byViewAttributeName="AMOUNT" direction="DESC"/>
+      <order byViewAttributeName="AMOUNT" direction="ASC"/>
       <rankThreshold>
         <value>3</value>
       </rankThreshold>
