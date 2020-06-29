@@ -1,0 +1,17 @@
+namespace SAPPRESS.EPM_MODEL;
+
+/*@@layout{"layoutInfo":{"x":-228.580078125,"y":-171}}*/
+context DA_CUSTOMER {
+};
+
+/*@@layout{"layoutInfo":{"x":-116.125,"y":-27}}*/
+entity EPM_CUSTOMER {
+    key CUSTOMER_ID      : String(10);
+        CUSTOMER_NAME1   : String(10);
+        CUSTOMER_NAME2   : String(10);
+        CUSTOMER_STREET  : String(25);
+        CUSTOMER_CITY    : String(20);
+        CUSTOMER_STATE   : String(2);
+        CUSTOMER_COUNTRY : String(2);
+        CUSTOMER_ZIP     : Integer;
+};

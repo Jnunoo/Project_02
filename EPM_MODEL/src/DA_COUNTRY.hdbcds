@@ -1,0 +1,10 @@
+namespace SAPPRESS.EPM_MODEL;
+
+context DA_COUNTRY {
+};
+
+/*@@layout{"layoutInfo":{"x":-61,"y":91.5}}*/
+entity EPM_COUNTRY {
+    key COUNTRY_ID   : String(2);
+        COUNTRY_NAME : String(20);
+};

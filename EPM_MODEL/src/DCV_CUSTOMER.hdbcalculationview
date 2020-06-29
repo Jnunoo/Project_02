@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::DCV_CUSTOMER" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DCV_CUSTOMER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL::EPM_COUNTRY">
+    <resourceUri>SAPPRESS.EPM_MODEL::EPM_COUNTRY</resourceUri>
+  </DataSource>
+  <DataSource id="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
+    <resourceUri>SAPPRESS.EPM_MODEL::EPM_CUSTOMER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="CUSTOMER_ID"/>
+      <viewAttribute id="CUSTOMER_NAME1"/>
+      <viewAttribute id="CUSTOMER_NAME2"/>
+      <viewAttribute id="CUSTOMER_STREET"/>
+      <viewAttribute id="CUSTOMER_CITY"/>
+      <viewAttribute id="CUSTOMER_STATE"/>
+      <viewAttribute id="CUSTOMER_COUNTRY"/>
+      <viewAttribute id="CUSTOMER_ZIP"/>
+      <viewAttribute id="COUNTRY_NAME"/>
+      <viewAttribute hidden="true" id="JOIN$COUNTRY_ID$CUSTOMER_COUNTRY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL::EPM_COUNTRY">
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_NAME" source="COUNTRY_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$COUNTRY_ID$CUSTOMER_COUNTRY" source="COUNTRY_ID"/>
+    </input>
+    <input node="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME1" source="CUSTOMER_NAME1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME2" source="CUSTOMER_NAME2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STREET" source="CUSTOMER_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_CITY" source="CUSTOMER_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STATE" source="CUSTOMER_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_COUNTRY" source="CUSTOMER_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="CUSTOMER_ZIP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$COUNTRY_ID$CUSTOMER_COUNTRY" source="CUSTOMER_COUNTRY"/>
+    </input>
+    <joinAttribute name="JOIN$COUNTRY_ID$CUSTOMER_COUNTRY"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="CUSTOMER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME1"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_NAME1"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME2" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME2"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_NAME2"/>
+    </attribute>
+    <attribute id="CUSTOMER_STREET" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STREET"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_STREET"/>
+    </attribute>
+    <attribute id="CUSTOMER_CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_CITY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_CITY"/>
+    </attribute>
+    <attribute id="CUSTOMER_STATE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_STATE"/>
+    </attribute>
+    <attribute id="CUSTOMER_COUNTRY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_COUNTRY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_COUNTRY"/>
+    </attribute>
+    <attribute id="CUSTOMER_ZIP" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ZIP"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ZIP"/>
+    </attribute>
+    <attribute id="COUNTRY_NAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="COUNTRY_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="105" y="209"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_COUNTRY" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="480" y="60"/>
+      <rectangleSize width="308.25390625"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_CUSTOMER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="78.25390625" y="66"/>
+      <rectangleSize width="317.81640625"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
