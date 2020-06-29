@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::DCV_CUST_SUPP" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DCV_CUST_SUPP"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
+    <resourceUri>SAPPRESS.EPM_MODEL::EPM_CUSTOMER</resourceUri>
+  </DataSource>
+  <DataSource id="SAPPRESS.EPM_MODEL.Suppliers::EPM_SUPPLIERS">
+    <resourceUri>SAPPRESS.EPM_MODEL.Suppliers::EPM_SUPPLIERS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:UnionView" id="Union_1">
+    <viewAttributes>
+      <viewAttribute id="CUSTOMER_ID"/>
+      <viewAttribute id="CUSTOMER_NAME1"/>
+      <viewAttribute id="CUSTOMER_NAME2"/>
+      <viewAttribute id="CUSTOMER_STREET"/>
+      <viewAttribute id="CUSTOMER_CITY"/>
+      <viewAttribute id="CUSTOMER_STATE"/>
+      <viewAttribute id="CUSTOMER_COUNTRY"/>
+      <viewAttribute id="CUSTOMER_ZIP"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME1" source="CUSTOMER_NAME1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME2" source="CUSTOMER_NAME2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STREET" source="CUSTOMER_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_CITY" source="CUSTOMER_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STATE" source="CUSTOMER_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_COUNTRY" source="CUSTOMER_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="CUSTOMER_ZIP"/>
+    </input>
+    <input node="SAPPRESS.EPM_MODEL.Suppliers::EPM_SUPPLIERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="SUPPLIER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME1" source="SUPPLIER_NAME1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME2" source="SUPPLIER_NAME2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STREET" source="SUPPLIER_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_CITY" source="SUPPLIER_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STATE" source="SUPPLIER_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_COUNTRY" source="SUPPLIER_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="SUPPLIER_ZIP"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Union_1">
+  <attributes>
+    <attribute id="CUSTOMER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME1"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_NAME1"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME2" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME2"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_NAME2"/>
+    </attribute>
+    <attribute id="CUSTOMER_STREET" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STREET"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_STREET"/>
+    </attribute>
+    <attribute id="CUSTOMER_CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_CITY"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_CITY"/>
+    </attribute>
+    <attribute id="CUSTOMER_STATE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STATE"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_STATE"/>
+    </attribute>
+    <attribute id="CUSTOMER_COUNTRY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_COUNTRY"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_COUNTRY"/>
+    </attribute>
+    <attribute id="CUSTOMER_ZIP" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ZIP"/>
+      <keyMapping columnObjectName="Union_1" columnName="CUSTOMER_ZIP"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Union_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-131" y="277"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

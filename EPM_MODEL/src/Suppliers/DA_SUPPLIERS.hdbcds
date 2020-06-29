@@ -1,0 +1,13 @@
+namespace SAPPRESS.EPM_MODEL.Suppliers;
+context DA_SUPPLIERS {
+};
+entity EPM_SUPPLIERS {
+    key SUPPLIER_ID      : String(10);
+        SUPPLIER_NAME1   : String(20);
+        SUPPLIER_NAME2   : String(20);
+        SUPPLIER_STREET  : String(20);
+        SUPPLIER_CITY    : String(10);
+        SUPPLIER_STATE   : String(2);
+        SUPPLIER_COUNTRY : String(2);
+        SUPPLIER_ZIP     : Integer;
+};
