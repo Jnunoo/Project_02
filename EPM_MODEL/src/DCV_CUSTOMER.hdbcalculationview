@@ -86,8 +86,8 @@
   <calculatedAttributes>
     <calculatedAttribute id="CUST_FULL_NAME" order="10" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Customer Full Name"/>
-      <keyCalculation datatype="VARCHAR" expressionLanguage="COLUMN_ENGINE" length="100">
-        <formula>&quot;CUSTOMER_NAME1&quot;+ &quot;CUSTOMER_NAME2&quot;+&quot;CUSTOMER_CITY&quot;</formula>
+      <keyCalculation datatype="VARCHAR" expressionLanguage="SQL" length="100">
+        <formula>concat(&quot;CUSTOMER_NAME1&quot;,&quot;CUSTOMER_NAME2&quot;)</formula>
       </keyCalculation>
     </calculatedAttribute>
   </calculatedAttributes>
@@ -115,4 +115,4 @@
     </shape>
   </shapes>
 </layout>
-</Calculation:scenario>   
+</Calculation:scenario>
