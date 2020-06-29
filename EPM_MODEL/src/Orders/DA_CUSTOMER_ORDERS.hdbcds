@@ -1,0 +1,12 @@
+namespace SAPPRESS.EPM_MODEL.Orders;
+
+context DA_CUSTOMER_ORDERS {
+    entity EPM_CUSTOMER_ORDERS {
+        key ORDER_ID    : String(10);
+            CUSTOMER_ID : String(10);
+            PRODUCT_ID  : String(10);
+            ORDER_DATE  : LocalDate;
+            ORDER_QTY   : Integer;
+            AMOUNT      : Decimal(10, 2);
+    };
+};
