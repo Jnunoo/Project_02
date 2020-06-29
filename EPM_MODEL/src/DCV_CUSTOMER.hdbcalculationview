@@ -12,7 +12,7 @@
   </DataSource>
 </dataSources>
 <calculationViews>
-  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_N" joinType="inner" filterExpressionLanguage="SQL">
     <viewAttributes>
       <viewAttribute id="CUSTOMER_ID"/>
       <viewAttribute id="CUSTOMER_NAME1"/>
@@ -41,6 +41,7 @@
       <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="CUSTOMER_ZIP"/>
       <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$COUNTRY_ID$CUSTOMER_COUNTRY" source="CUSTOMER_COUNTRY"/>
     </input>
+    <filter>&quot;CUSTOMER_COUNTRY&quot; = 'CA'</filter>
     <joinAttribute name="JOIN$COUNTRY_ID$CUSTOMER_COUNTRY"/>
   </calculationView>
 </calculationViews>
