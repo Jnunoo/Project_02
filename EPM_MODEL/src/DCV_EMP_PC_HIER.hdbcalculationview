@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="SAPPRESS.EPM_MODEL::DCV_EMP_PC_HIER" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DCV_EMP_PC_HIER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.Employee::EPM_EMPLOYEE">
+    <resourceUri>SAPPRESS.EPM_MODEL.Employee::EPM_EMPLOYEE</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<inlineHierarchy xsi:type="Dimension:ParentChildHierarchy" id="EMP_PARENT_1" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE_IF_DEFINED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+  <descriptions defaultDescription="EMP_PARENT_1"/>
+  <unassignedMemberProperties mode="FALSE"/>
+  <attributeParentPair attribute="EMP_NAME" parentAttribute="EMP_MANAGER">
+    <rootNode/>
+  </attributeParentPair>
+</inlineHierarchy>
+<logicalModel id="SAPPRESS.EPM_MODEL.Employee::EPM_EMPLOYEE">
+  <attributes>
+    <attribute id="EMP_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_ID"/>
+      <keyMapping columnObjectName="EPM_EMPLOYEE" columnName="EMP_ID"/>
+    </attribute>
+    <attribute id="EMP_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_NAME"/>
+      <keyMapping columnObjectName="EPM_EMPLOYEE" columnName="EMP_NAME"/>
+    </attribute>
+    <attribute id="EMP_MANAGER" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="EMP_MANAGER"/>
+      <keyMapping columnObjectName="EPM_EMPLOYEE" columnName="EMP_MANAGER"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

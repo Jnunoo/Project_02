@@ -1,0 +1,23 @@
+{
+	"format_version": 1,
+	"imports": [{
+		"target_table": "SAPPRESS.EPM_MODEL.Employee::EPM_EMPLOYEE",
+		"source_data": {
+			"data_type": "CSV",
+			"file_name": "SAPPRESS.EPM_MODEL.Employee::Employee.csv",
+			"has_header": false
+		},
+		"column_mappings": {
+			"EMP_ID": 1,
+			"EMP_NAME": 2,
+			"EMP_MANAGER": 3
+		},
+		"import_settings": {
+			"import_columns": [
+				"EMP_ID",
+				"EMP_NAME",
+				"EMP_MANAGER"
+			]
+		}
+	}]
+}

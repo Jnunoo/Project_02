@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:DataFoundation="http://www.sap.com/ndb/BiModelDataFoundation.ecore" xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" id="SAPPRESS.EPM_MODEL::CCV_PRD_LVL_HIER" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CCV_PRD_LVL_HIER"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS">
+    <resourceUri>SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS</resourceUri>
+  </DataSource>
+  <DataSource id="SAPPRESS.EPM_MODEL.Products::EPM_PRODUCTS">
+    <resourceUri>SAPPRESS.EPM_MODEL.Products::EPM_PRODUCTS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="inner" optimizeJoinColumns="false">
+    <viewAttributes>
+      <viewAttribute id="ORDER_ID"/>
+      <viewAttribute id="CUSTOMER_ID"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="AMOUNT" aggregationType="sum"/>
+      <viewAttribute id="SUPPLIER_ID"/>
+      <viewAttribute id="PRODUCT_ID_1"/>
+      <viewAttribute id="PRODUCT_NAME"/>
+      <viewAttribute id="PRODUCT_CAT"/>
+      <viewAttribute id="PRODUCT_SUBCAT"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_ID" source="ORDER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_ID" source="SUPPLIER_ID"/>
+    </input>
+    <input node="SAPPRESS.EPM_MODEL.Products::EPM_PRODUCTS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID_1" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_NAME" source="PRODUCT_NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_CAT" source="PRODUCT_CAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_SUBCAT" source="PRODUCT_SUBCAT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+    </input>
+    <joinAttribute name="PRODUCT_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ORDER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="ORDER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_DATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SUPPLIER_ID" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="SUPPLIER_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_ID_1" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID_1"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_ID_1"/>
+    </attribute>
+    <attribute id="PRODUCT_NAME" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_NAME"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_NAME"/>
+    </attribute>
+    <attribute id="PRODUCT_CAT" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_CAT"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_CAT"/>
+    </attribute>
+    <attribute id="PRODUCT_SUBCAT" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_SUBCAT"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_SUBCAT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ORDER_QTY" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ORDER_QTY"/>
+      <measureMapping columnObjectName="Join_1" columnName="ORDER_QTY"/>
+    </measure>
+    <measure id="AMOUNT" order="6" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions>
+    <localDimension id="PRD_LEVEL_1">
+      <attributeRef xsi:type="DataFoundation:Attribute">PRODUCT_CAT</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">PRODUCT_SUBCAT</attributeRef>
+      <attributeRef xsi:type="DataFoundation:Attribute">PRODUCT_NAME</attributeRef>
+      <hierarchies>
+        <hierarchy xsi:type="Dimension:LeveledHierarchy" id="PRD_LEVEL_1" aggregateAllNodes="true" orphanedNodesHandling="ROOT_NODES" rootNodeVisibility="ADD_ROOT_NODE" withRootNode="true" nodeStyle="NAME_ONLY_ENFORCED" cacheEnabled="true" cycleHandling="BREAKUP" emptyValueIsNull="true">
+          <descriptions defaultDescription="PRD_LEVEL_1"/>
+          <unassignedMemberProperties mode="FALSE"/>
+          <levels>
+            <level levelAttribute="PRODUCT_CAT" levelType="MDLEVEL_TYPE_REGULAR" order="1" orderAttribute="PRODUCT_CAT" sortDirection="ASC"/>
+            <level levelAttribute="PRODUCT_SUBCAT" levelType="MDLEVEL_TYPE_REGULAR" order="2" orderAttribute="PRODUCT_SUBCAT" sortDirection="ASC"/>
+            <level levelAttribute="PRODUCT_NAME" levelType="MDLEVEL_TYPE_REGULAR" order="3" orderAttribute="PRODUCT_NAME" sortDirection="ASC"/>
+          </levels>
+        </hierarchy>
+      </hierarchies>
+    </localDimension>
+  </localDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-3" y="252"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="572.318359375"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL.Products::EPM_PRODUCTS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="372.044921875"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

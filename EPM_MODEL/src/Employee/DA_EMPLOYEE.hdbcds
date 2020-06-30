@@ -1,0 +1,11 @@
+namespace SAPPRESS.EPM_MODEL.Employee;
+
+context DA_EMPLOYEE {
+};
+
+/*@@layout{"layoutInfo":{}}*/
+entity EPM_EMPLOYEE {
+    key EMP_ID      : String(4);
+        EMP_NAME    : String(20);
+        EMP_MANAGER : String(20);
+};
