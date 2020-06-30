@@ -8,5 +8,6 @@ context DA_CUSTOMER_ORDERS {
             ORDER_DATE  : LocalDate;
             ORDER_QTY   : Integer;
             AMOUNT      : Decimal(10, 2);
+            SUPPLIER_ID : String(10);
     };
 };

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::CCVS_EPM_MODEL" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CCVS_EPM_MODEL"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS">
+    <resourceUri>SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="ORDER_ID"/>
+      <viewAttribute id="CUSTOMER_ID"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY"/>
+      <viewAttribute id="AMOUNT"/>
+    
+      <viewAttribute id="SUPPLIER_ID"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="ORDER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ORDER_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_ID_1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_DATE"/>
+      <keyMapping columnObjectName="Projection_1" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SUPPLIER_ID_1" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SUPPLIER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_ID_1" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID_1"/>
+      <keyMapping columnObjectName="Projection_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_ID$local">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="SUPPLIER_ID$local">
+      <descriptions defaultDescription="SUPPLIER_ID"/>
+      <keyMapping columnObjectName="Projection_1" columnName="SUPPLIER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_ID$local">
+      <keyMapping columnObjectName="Projection_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ORDER_QTY" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ORDER_QTY"/>
+      <measureMapping columnObjectName="Projection_1" columnName="ORDER_QTY"/>
+    </measure>
+    <measure id="AMOUNT" order="5" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AMOUNT"/>
+      <measureMapping columnObjectName="Projection_1" columnName="AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="SAPPRESS.EPM_MODEL.Suppliers::DCV_SUPPLIERS">
+      <attributes>
+        <attributeRef>SUPPLIER_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>SUPPLIER_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="SAPPRESS.EPM_MODEL.Products::DCV_PRODUCTS">
+      <attributes>
+        <attributeRef>PRODUCT_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>PRODUCT_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="SAPPRESS.EPM_MODEL.Customers::DCV_CUSTOMERS">
+      <attributes>
+        <attributeRef>CUSTOMER_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUSTOMER_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="referential" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="108" y="265"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="785" y="149"/>
+      <rectangleSize width="165.86279296875"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL.Suppliers::DCV_SUPPLIERS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="189" y="80"/>
+      <rectangleSize width="374"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL.Products::DCV_PRODUCTS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="620" y="30"/>
+      <rectangleSize width="371"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL.Customers::DCV_CUSTOMERS" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="1220" y="30"/>
+      <rectangleSize width="391.169921875"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
