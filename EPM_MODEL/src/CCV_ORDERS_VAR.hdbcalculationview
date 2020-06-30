@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::CCV_ORDERS_VAR" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CCV_ORERS_VAR"/>
+<localVariables>
+  <variable id="VAR_COUNTRY">
+    <descriptions defaultDescription="VAR_COUNTRY"/>
+    <variableProperties datatype="NVARCHAR" length="2" scale="NaN" defaultValue="">
+      <valueDomain type="AttributeValue">
+        <attribute name="CUSTOMER_COUNTRY"/>
+      </valueDomain>
+      <selection type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS">
+    <resourceUri>SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS</resourceUri>
+  </DataSource>
+  <DataSource id="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
+    <resourceUri>SAPPRESS.EPM_MODEL::EPM_CUSTOMER</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="CN_1" joinType="leftOuter">
+    <viewAttributes>
+      <viewAttribute id="ORDER_ID"/>
+      <viewAttribute id="CUSTOMER_ID"/>
+      <viewAttribute id="PRODUCT_ID"/>
+      <viewAttribute id="ORDER_DATE"/>
+      <viewAttribute id="ORDER_QTY" aggregationType="sum"/>
+      <viewAttribute id="AMOUNT" aggregationType="sum"/>
+      <viewAttribute id="SUPPLIER_ID"/>
+      <viewAttribute id="CUSTOMER_ID_1"/>
+      <viewAttribute id="CUSTOMER_NAME1"/>
+      <viewAttribute id="CUSTOMER_NAME2"/>
+      <viewAttribute id="CUSTOMER_STREET"/>
+      <viewAttribute id="CUSTOMER_CITY"/>
+      <viewAttribute id="CUSTOMER_STATE"/>
+      <viewAttribute id="CUSTOMER_COUNTRY"/>
+      <viewAttribute id="CUSTOMER_ZIP" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_ID" source="ORDER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="PRODUCT_ID" source="PRODUCT_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_DATE" source="ORDER_DATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ORDER_QTY" source="ORDER_QTY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AMOUNT" source="AMOUNT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SUPPLIER_ID" source="SUPPLIER_ID"/>
+    </input>
+    <input node="SAPPRESS.EPM_MODEL::EPM_CUSTOMER">
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID_1" source="CUSTOMER_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME1" source="CUSTOMER_NAME1"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_NAME2" source="CUSTOMER_NAME2"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STREET" source="CUSTOMER_STREET"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_CITY" source="CUSTOMER_CITY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_STATE" source="CUSTOMER_STATE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_COUNTRY" source="CUSTOMER_COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ZIP" source="CUSTOMER_ZIP"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CUSTOMER_ID" source="CUSTOMER_ID"/>
+    </input>
+    <joinAttribute name="CUSTOMER_ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="ORDER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="ORDER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="PRODUCT_ID" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="PRODUCT_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="PRODUCT_ID"/>
+    </attribute>
+    <attribute id="ORDER_DATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ORDER_DATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="ORDER_DATE"/>
+    </attribute>
+    <attribute id="SUPPLIER_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="SUPPLIER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME1" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME1"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_NAME1"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME2" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME2"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_NAME2"/>
+    </attribute>
+    <attribute id="CUSTOMER_STREET" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STREET"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_STREET"/>
+    </attribute>
+    <attribute id="CUSTOMER_CITY" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_CITY"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_CITY"/>
+    </attribute>
+    <attribute id="CUSTOMER_STATE" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STATE"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_STATE"/>
+    </attribute>
+    <attribute id="CUSTOMER_COUNTRY" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_COUNTRY"/>
+      <localVariable>VAR_COUNTRY</localVariable>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_COUNTRY"/>
+    </attribute>
+    <attribute id="CUSTOMER_ZIP" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ZIP"/>
+      <keyMapping columnObjectName="Join_1" columnName="CUSTOMER_ZIP"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ORDER_QTY" order="13" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ORDER_QTY"/>
+      <measureMapping columnObjectName="Join_1" columnName="ORDER_QTY"/>
+    </measure>
+    <measure id="AMOUNT" order="14" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="AMOUNT"/>
+      <measureMapping columnObjectName="Join_1" columnName="AMOUNT"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL.Orders::DA_CUSTOMER_ORDERS.EPM_CUSTOMER_ORDERS" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="168" y="50"/>
+      <rectangleSize width="572"/>
+    </shape>
+    <shape modelObjectName="SAPPRESS.EPM_MODEL::EPM_CUSTOMER" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="868" y="34"/>
+      <rectangleSize width="317"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
