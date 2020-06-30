@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL::CCV_ORDERS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" id="SAPPRESS.EPM_MODEL::CCV_ORDERS" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
 <descriptions defaultDescription="CCV_ORDERS"/>
 <localVariables/>
 <variableMappings/>
@@ -148,8 +148,23 @@
       <measureMapping columnObjectName="Join_1" columnName="AMOUNT"/>
     </measure>
   </baseMeasures>
-  <calculatedMeasures/>
-  <restrictedMeasures/>
+  <calculatedMeasures>
+    <measure id="AVG_COST" order="16" aggregationType="avg" measureType="simple" aggregatable="true" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
+      <descriptions defaultDescription="AVG_COST"/>
+      <formula>&quot;AMOUNT&quot;/&quot;ORDER_QTY&quot;</formula>
+    </measure>
+  </calculatedMeasures>
+  <restrictedMeasures>
+    <measure id="US_SALES" order="17" aggregationType="sum" datatype="DECIMAL" length="10" scale="2" baseMeasure="AMOUNT">
+      <descriptions defaultDescription="US_SALES"/>
+      <restriction logicalOperator="AND">
+        <filter xsi:type="Privilege:AttributeFilter" attributeName="CUSTOMER_COUNTRY">
+          <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="US"/>
+        </filter>
+        <attributeName>CUSTOMER_COUNTRY</attributeName>
+      </restriction>
+    </measure>
+  </restrictedMeasures>
   <localDimensions/>
 </logicalModel>
 <layout>

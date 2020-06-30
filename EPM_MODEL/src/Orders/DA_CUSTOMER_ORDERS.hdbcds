@@ -9,5 +9,8 @@ context DA_CUSTOMER_ORDERS {
             ORDER_QTY   : Integer;
             AMOUNT      : Decimal(10, 2);
             SUPPLIER_ID : String(10);
+    }
+    technical configuration {
+        partition by HASH(ORDER_ID)Partitions GET_NUM_SERVERS();
     };
 };
