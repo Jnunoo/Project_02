@@ -1,0 +1,11 @@
+namespace SAPPRESS.EPM_MODEL.Products;
+
+context DA_PRODUCTS {
+};
+
+entity EPM_PRODUCTS {
+    key PRODUCT_ID     : String(10);
+        PRODUCT_NAME   : String(20);
+        PRODUCT_CAT    : String(15);
+        PRODUCT_SUBCAT : String(15);
+};
