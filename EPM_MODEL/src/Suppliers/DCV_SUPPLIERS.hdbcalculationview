@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL.Suppliers::DCV_SUPPLIERS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DCV_SUPPLIERS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.Suppliers::EPM_SUPPLIERS">
+    <resourceUri>SAPPRESS.EPM_MODEL.Suppliers::EPM_SUPPLIERS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="SAPPRESS.EPM_MODEL.Suppliers::EPM_SUPPLIERS">
+  <attributes>
+    <attribute id="SUPPLIER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_ID"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_ID"/>
+    </attribute>
+    <attribute id="SUPPLIER_NAME1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_NAME1"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_NAME1"/>
+    </attribute>
+    <attribute id="SUPPLIER_NAME2" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_NAME2"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_NAME2"/>
+    </attribute>
+    <attribute id="SUPPLIER_STREET" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_STREET"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_STREET"/>
+    </attribute>
+    <attribute id="SUPPLIER_CITY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_CITY"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_CITY"/>
+    </attribute>
+    <attribute id="SUPPLIER_STATE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_STATE"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_STATE"/>
+    </attribute>
+    <attribute id="SUPPLIER_COUNTRY" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_COUNTRY"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_COUNTRY"/>
+    </attribute>
+    <attribute id="SUPPLIER_ZIP" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SUPPLIER_ZIP"/>
+      <keyMapping columnObjectName="EPM_SUPPLIERS" columnName="SUPPLIER_ZIP"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
