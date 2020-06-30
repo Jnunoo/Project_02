@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" xmlns:Variable="http://www.sap.com/ndb/BiModelVariable.ecore" id="SAPPRESS.EPM_MODEL::DCV_TF_CUSTOMERS" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="DCV_TF_CUSTOMERS"/>
+<localVariables>
+  <variable id="IP_CUSTNAME" parameter="true">
+    <descriptions defaultDescription=" "/>
+    <variableProperties datatype="NVARCHAR" length="20">
+      <valueDomain type="empty"/>
+      <selection/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings>
+  <mapping xsi:type="Variable:VariableMapping" dataSource="SAPPRESS.EPM_MODEL.Functions::TF_FUZZY_CUSTOMERS">
+    <targetVariable name="IP_CUSTNAME" resourceUri="SAPPRESS.EPM_MODEL.Functions::TF_FUZZY_CUSTOMERS"/>
+    <localVariable>IP_CUSTNAME</localVariable>
+  </mapping>
+</variableMappings>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.Functions::TF_FUZZY_CUSTOMERS" type="TABLE_FUNCTION">
+    <resourceUri>SAPPRESS.EPM_MODEL.Functions::TF_FUZZY_CUSTOMERS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="SAPPRESS.EPM_MODEL.Functions::TF_FUZZY_CUSTOMERS">
+  <attributes>
+    <attribute id="CUSTOMER_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_ID"/>
+      <keyMapping columnObjectName="TF_FUZZY_CUSTOMERS" columnName="CUSTOMER_ID"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME1" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME1"/>
+      <keyMapping columnObjectName="TF_FUZZY_CUSTOMERS" columnName="CUSTOMER_NAME1"/>
+    </attribute>
+    <attribute id="CUSTOMER_NAME2" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_NAME2"/>
+      <keyMapping columnObjectName="TF_FUZZY_CUSTOMERS" columnName="CUSTOMER_NAME2"/>
+    </attribute>
+    <attribute id="CUSTOMER_STATE" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_STATE"/>
+      <keyMapping columnObjectName="TF_FUZZY_CUSTOMERS" columnName="CUSTOMER_STATE"/>
+    </attribute>
+    <attribute id="CUSTOMER_COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTOMER_COUNTRY"/>
+      <keyMapping columnObjectName="TF_FUZZY_CUSTOMERS" columnName="CUSTOMER_COUNTRY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
