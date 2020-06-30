@@ -1,0 +1,25 @@
+FUNCTION "SAPPRESS.EPM_MODEL.Functions::TF_FUZZY_CUSTOMERS"( IP_CustName NVARCHAR(20))
+       RETURNS table
+       (
+"CUSTOMER_ID" NVARCHAR(10),
+"CUSTOMER_NAME1" NVARCHAR(20),
+"CUSTOMER_NAME2" NVARCHAR(20),
+"CUSTOMER_STATE" NVARCHAR(2),
+"CUSTOMER_COUNTRY" NVARCHAR(2)
+)
+       LANGUAGE SQLSCRIPT 
+       SQL SECURITY INVOKER AS 
+BEGIN 
+    /*****************************
+        Write your function logic
+    ****************************/
+RETURN
+	Select 
+	"CUSTOMER_ID",
+	"CUSTOMER_NAME1",
+	"CUSTOMER_NAME2",
+	"CUSTOMER_STATE",
+	"CUSTOMER_COUNTRY"
+	From "SAPPRESS.EPM_MODEL::EPM_CUSTOMER"
+	where contains("CUSTOMER_NAME1", :IP_CustName,FUZZY(0.5));
+END;
