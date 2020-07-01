@@ -1,0 +1,8 @@
+{
+	"role": {
+		"name": "SAPPRESS.EPM_MODEL::ext_access",
+		"schema_privileges": [{
+			"privileges": ["SELECT"]
+		}]
+	}
+}
