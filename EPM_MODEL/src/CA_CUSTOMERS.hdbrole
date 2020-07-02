@@ -1,0 +1,11 @@
+{
+	"role": {
+		"name": "SAPPRESS.EPM_MODEL::CA_CUSTOMERS",
+		"schema_privileges": [{
+			"privileges": ["SELECT"]
+		}],
+		"schema_analytic_privileges": [{
+			"privileges": ["SAPPRESS.EPM_MODEL::AP_CUST_CNTRY_CA"]
+		}]
+	}
+}
