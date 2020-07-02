@@ -1,0 +1,23 @@
+{
+    "format_version": 1,
+    "imports": [
+            {
+            "target_table": "SAPPRESS.EPM_MODEL.PAL.Tables::SocialData.SocialData",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "SAPPRESS.EPM_MODEL.PAL.Tables::SocialData.csv",
+                "has_header": false
+            },
+            "column_mappings": {
+            		"pageFrom": 1,
+					"pageTo": 2
+            },
+            "import_settings": {
+                "import_columns": [
+                    "pageFrom",
+					"pageTo"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+namespace SAPPRESS.EPM_MODEL.PAL.Tables;
+
+context SocialData {
+
+    /*@@layout{"layoutInfo":{"x":-434,"y":-115.5}}*/
+    entity SocialData {
+        pageFrom : String(100);
+        pageTo   : String(100);
+    };
+
+    /*@@layout{"layoutInfo":{"x":-696,"y":-119.5}}*/
+    entity SocialResults {
+        page : String(100);
+        rank : Double;
+    };
+};
