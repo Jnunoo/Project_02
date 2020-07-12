@@ -1,0 +1,11 @@
+namespace SAPPRESS.EPM_MODEL.GeoSpatial.Tables;
+
+context MyToyStores {
+
+    /*@@layout{"layoutInfo":{"x":-468,"y":-134.5}}*/
+    entity MyToyStores {
+        State       : String(10);
+        MyStore_ID  : String(10);
+        MyStore_Loc : hana.ST_POINT;
+    };
+};

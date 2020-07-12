@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SAPPRESS.EPM_MODEL.GeoSpatial::GeoSpatial" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="GeoSpatial"/>
+<localVariables>
+  <variable id="IP_DISTANCE" parameter="true">
+    <descriptions defaultDescription=""/>
+    <variableProperties datatype="INTEGER" mandatory="false">
+      <valueDomain type="empty"/>
+      <selection multiLine="false" type="SingleValue"/>
+    </variableProperties>
+  </variable>
+</localVariables>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SAPPRESS.EPM_MODEL.GeoSpatial.Tables::MyToyStores.MyToyStores">
+    <resourceUri>SAPPRESS.EPM_MODEL.GeoSpatial.Tables::MyToyStores.MyToyStores</resourceUri>
+  </DataSource>
+  <DataSource id="SAPPRESS.EPM_MODEL.GeoSpatial.Tables::CompToyStores.CompToyStores">
+    <resourceUri>SAPPRESS.EPM_MODEL.GeoSpatial.Tables::CompToyStores.CompToyStores</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="State"/>
+      <viewAttribute id="MyStore_ID"/>
+      <viewAttribute id="MyStore_Loc"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL.GeoSpatial.Tables::MyToyStores.MyToyStores"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="State"/>
+      <viewAttribute id="CompStore_ID"/>
+      <viewAttribute id="CompStore_Loc"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SAPPRESS.EPM_MODEL.GeoSpatial.Tables::CompToyStores.CompToyStores"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="State"/>
+      <viewAttribute id="MyStore_ID"/>
+      <viewAttribute id="MyStore_Loc"/>
+      <viewAttribute id="State_1"/>
+      <viewAttribute id="CompStore_ID"/>
+      <viewAttribute id="CompStore_Loc"/>
+      <viewAttribute hidden="true" id="JOIN$MyStore_Loc$CompStore_Loc"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="State" source="State"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MyStore_ID" source="MyStore_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="MyStore_Loc" source="MyStore_Loc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MyStore_Loc$CompStore_Loc" source="MyStore_Loc"/>
+    </input>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="State_1" source="State"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompStore_ID" source="CompStore_ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CompStore_Loc" source="CompStore_Loc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$MyStore_Loc$CompStore_Loc" source="CompStore_Loc"/>
+    </input>
+    <joinAttribute name="JOIN$MyStore_Loc$CompStore_Loc">
+      <spatialJoinProperties predicate="WITHIN_DISTANCE" predicateEvaluatesTo="true">
+        <distance>
+          <localVariable>IP_DISTANCE</localVariable>
+        </distance>
+      </spatialJoinProperties>
+    </joinAttribute>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="State" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="State"/>
+      <keyMapping columnObjectName="Join_1" columnName="State"/>
+    </attribute>
+    <attribute id="MyStore_ID" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MyStore_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="MyStore_ID"/>
+    </attribute>
+    <attribute id="MyStore_Loc" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MyStore_Loc"/>
+      <keyMapping columnObjectName="Join_1" columnName="MyStore_Loc"/>
+    </attribute>
+    <attribute id="State_1" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="State"/>
+      <keyMapping columnObjectName="Join_1" columnName="State_1"/>
+    </attribute>
+    <attribute id="CompStore_ID" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CompStore_ID"/>
+      <keyMapping columnObjectName="Join_1" columnName="CompStore_ID"/>
+    </attribute>
+    <attribute id="CompStore_Loc" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CompStore_Loc"/>
+      <keyMapping columnObjectName="Join_1" columnName="CompStore_Loc"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="221.11302679000914" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="302.00000000000006" y="376.9999988079071"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="221.11302679000914" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

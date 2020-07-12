@@ -1,0 +1,12 @@
+namespace SAPPRESS.EPM_MODEL.Graph;
+
+context EDGES {
+
+    /*@@layout{"layoutInfo":{"x":-372,"y":-138.5}}*/
+    entity EDGES {
+        key Edge_ID  : Integer not null;
+            Distance : Integer;
+            Starting : Integer not null;
+            Ending   : Integer not null;
+    };
+};

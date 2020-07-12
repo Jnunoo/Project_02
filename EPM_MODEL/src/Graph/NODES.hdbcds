@@ -1,0 +1,12 @@
+namespace SAPPRESS.EPM_MODEL.Graph;
+
+context NODES {
+
+    /*@@layout{"layoutInfo":{"x":-366,"y":-109.5}}*/
+    entity NODES {
+        key Node_ID   : Integer not null;
+            Node_Name : String(20);
+            Pickup    : String(5);
+            Delivery  : String(5);
+    };
+};
